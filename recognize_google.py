@@ -1,14 +1,11 @@
 import speech_recognition as sr
 
-def recognize_speech_from_mic():
+def recognize_speech_from_audio_file(file_path):
     recognizer = sr.Recognizer()
-    mic = sr.Microphone()
 
-    with mic as source:
-        print("Adjusting for ambient noise, please wait...")
-        recognizer.adjust_for_ambient_noise(source)
-        print("Listening...")
-        audio = recognizer.listen(source)
+    with sr.AudioFile(file_path) as source:
+        print("Reading audio file...")
+        audio = recognizer.record(source)
 
     try:
         print("Recognizing...")
@@ -20,4 +17,4 @@ def recognize_speech_from_mic():
         print(f"Could not request results from Google Speech Recognition service; {e}")
 
 if __name__ == "__main__":
-    recognize_speech_from_mic()
+    recognize_speech_from_audio_file("./voice_01.wav")
