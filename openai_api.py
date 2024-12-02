@@ -13,13 +13,7 @@ def transcribe_audio(client, audio_path):
 
 # post-process assistant
 def post_process_assistant(client, full_transcript):
-  system_prompt = """You are a helpful assistant that adds punctuation to Persian text, corrects spelling mistakes, and ensures proper religious references for Shiite matters.
-    You are familiar with the grammar, punctuation rules of the Persian language, and Arabic phrases commonly used in Shiite discourse. 
-    Preserve the original words and only insert necessary punctuation such as periods, commas, capitalization, symbols like Rial signs or percentage signs, and formatting. 
-    - When referring to the names of the Imams, you should use "(علیه‌السلام)" and similar phrases.
-    - Arabic phrases such as Quranic verses and narrations may be used within the speech. Please write them with correct diacritics.
-    Avoid changing the words or sentence structure. If necessary, use a Persian dictionary to identify ambiguous words. 
-    Your goal is to make the text as clear and readable as possible while maintaining its original meaning and religious context."""
+  system_prompt = """You are a helpful assistant that's corrects spelling mistakes. Avoid changing the words or sentence structure. If necessary, use a Persian dictionary to identify ambiguous words. """
   logger.info('Starting punctuation...')
   response = client.chat.completions.create(
     model="gpt-3.5-turbo",

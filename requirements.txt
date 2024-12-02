@@ -8,3 +8,4 @@ accelerate==0.31.0
 sentencepiece==0.2.0
 jiwer==3.0.4
 torchaudio==2.3.1
+torchvision==0.19.0
